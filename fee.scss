@@ -1,0 +1,176 @@
+body {
+
+    background-image: url(jay-pVdiv_8oY_s-unsplash.jpg);
+  }
+  
+  .fairy {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+    position: absolute;
+    perspective: 250px;
+    animation: flying 12s linear infinite;
+  }
+  
+  .glow {
+    width: 56px;
+    height: 56px;
+    top: 50%;
+    left: 50%;
+    margin: -28px 0 0 -28px;
+    position: absolute;
+    transform-style: preserve-3d;
+    border-radius: 100px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 240, 240, 1) 35%,
+      rgba(255, 204, 204, 1) 50%,
+      rgba(242, 148, 154, 1) 65%,
+      rgba(223, 126, 132, 1) 100%
+    );
+    &:after {
+      // this psuedo element is not nessesary, its just to fix a visual glitch
+      content: "";
+      width: 54px;
+      height: 54px;
+      top: 50%;
+      left: 50%;
+      margin: -27px 0 0 -27px;
+      position: absolute;
+      border-radius: 100px;
+      animation: pulse 1.5s ease-in-out infinite alternate;
+    }
+  }
+  
+  .sparkle {
+    height: 3px;
+    width: 3px;
+    background: #FFAFB1;
+    position: absolute;
+    border-radius: 100px;
+    opacity: 0;
+    z-index: 100;
+    // if you're bored, do these nth child elements with a sass loop
+    &:nth-child(1) {
+      top: -20px;
+      left: 15px;
+    }
+    &:nth-child(2) {
+      top: 3px;
+      left: 60px;
+    }
+    &:nth-child(3) {
+      top: 60px;
+      left: 50px;
+    }
+    &:nth-child(4) {
+      top: 68px;
+      left: 16px;
+    }
+    &:nth-child(5) {
+      top: 50px;
+      left: 0px;
+    }
+  }
+  
+  @for $i from 1 through 5 {
+    .sparkle:nth-child(#{$i}) {
+      // using loop for staggered animation
+      animation: sparkling .8s ease-in-out $i * .2s infinite;
+    }
+  }
+  
+  .wings {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 144px;
+    height: 114px;
+    margin: -87px 0 0 -72px;
+    &:before, &:after {
+      content: "";
+      width: 64px;
+      height: 114px;
+      top: 50%;
+      left: 50%;
+      margin: -57px 0 0 -72px;
+      position: absolute;
+      transform-origin: right;
+      animation: flapping-left 0.2s ease-in-out infinite;
+      background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wing-left.svg')
+        no-repeat;
+    }
+    &:after {
+      left: auto;
+      right: 50%;
+      margin: -57px -72px 0 0;
+      transform-origin: left;
+      animation: flapping-right 0.2s ease-in-out infinite;
+      background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wing-right.svg')
+        no-repeat;
+    }
+  }
+  
+  //Animations
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px 5px rgba(239, 145, 145, 0.9),
+        0 0 30px 20px rgba(195, 66, 102, 0.8);
+    }
+    50% {
+      box-shadow: 0 0 30px 7px rgba(239, 145, 145, 0.9),
+        0 0 35px 22px rgba(195, 66, 102, 0.8);
+    }
+  }
+  
+  @keyframes sparkling {
+    0%, 100% {
+      transform: scale3d(0, 0, 1);
+      opacity: 0;
+    }
+    25%, 75% {
+      opacity: 1;
+    }
+    50% {
+      transform: scale3d(1, 1, 1);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes flapping-left {
+    0%, 100% {
+      transform: rotateX(-15deg) rotateY(-45deg);
+    }
+    50% {
+      transform: rotateX(-10deg) rotateY(-20deg);
+    }
+  }
+  
+  @keyframes flapping-right {
+    0%, 100% {
+      transform: rotateX(-15deg) rotateY(45deg);
+    }
+    50% {
+      transform: rotateX(-10deg) rotateY(20deg);
+    }
+  }
+  
+  @keyframes flying {
+    0% {
+      transform: rotate(50deg) translateX(0px) rotate(-50deg) scale(0.75);
+    }
+    50% {
+      transform: rotate(180deg) translateX(80px) rotate(-180deg) scale(.9);
+    }
+    100% {
+      transform: rotate(360deg) translateX(0px) rotate(-360deg) scale(0.75);
+    }
+  }
+  
+  p{
+      color: white;
+  }
+  

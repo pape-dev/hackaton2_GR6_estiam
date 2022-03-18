@@ -1,0 +1,536 @@
+/*
+-------------------------------Les souhaits ridicules---------------------------------------------------------------------------
+*/
+
+/*
+--------------------------remize à zéro des réglages par défaut du site-----------------------------------------------------------------
+*/
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
+	font-family: 'Oswald', sans-serif;
+  }
+
+  
+  /*
+  --------------------------------------------html, body---------------------------------------------------------------------------------------
+  */
+  html,
+body {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #343a40;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*
+----------------------------------------------le header------------------------------------------------------------------------------------
+*/
+.box {
+  display: flex;
+}
+
+.box .inner {
+  width: 400px;
+  height: 200px;
+  line-height: 200px;
+  font-size: 4em;
+  font-family: sans-serif;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.box .inner:first-child {
+  background-color: rgba(16, 17, 17, 0.404);
+  color: darkred;
+  transform-origin: right;
+  transform: perspective(100px) rotateY(-15deg);
+}
+
+.box .inner:last-child {
+  background-color: lightcoral;
+  color: antiquewhite;
+  transform-origin: left;
+  transform: perspective(100px) rotateY(15deg);
+}
+
+.box .inner span {
+  position: absolute;
+  animation: marquee 5s linear infinite;
+}
+
+.box .inner:first-child span {
+  animation-delay: 2.5s;
+  left: -100%;
+}
+
+@keyframes marquee {
+  from {
+    left: 100%;
+  }
+
+  to {
+    left: -100%;
+  }
+}
+
+
+/*
+---------------------------------------------------------le menu--------------------------------------------------------------------------
+*/
+.wrapper{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	/*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+	/* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+	/* clip-path: circle(25px at calc(0% + 45px) 45px); */
+	background: rgb(236, 229, 229);
+	clip-path: circle(25px at calc(100% - 45px) 45px);
+	transition: all 0.3s ease-in-out;
+  }
+  #active:checked ~ .wrapper{
+	clip-path: circle(75%);
+  }
+  .menu-btn{
+	position: absolute;
+	z-index: 2;
+	right: 20px;
+	/* left: 20px; */
+	top: 20px;
+	height: 50px;
+	width: 50px;
+	text-align: center;
+	line-height: 50px;
+	border-radius: 50%;
+	font-size: 20px;
+	color: #fff;
+	cursor: pointer;
+	/*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+	/* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+	background: #000;
+	transition: all 0.3s ease-in-out;
+  }
+  #active:checked ~ .menu-btn{
+	color: #fff;
+  }
+  #active:checked ~ .menu-btn i:before{
+	content: "\f00d";
+  }
+  .wrapper ul{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	list-style: none;
+	text-align: center;
+  }
+  .wrapper ul li{
+	margin: 15px 0;
+  }
+  .wrapper ul li a{
+	color: none;
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: 500;
+	padding: 5px 30px;
+	color: #fff;
+	border-radius: 50px;
+	background: #000;
+	position: relative;
+	line-height: 50px;
+	transition: all 0.3s ease;
+  }
+  .wrapper ul li a:after{
+	position: absolute;
+	content: "";
+	background: #fff;
+	 background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);
+	/*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+	width: 104%;
+	height: 110%;
+	left: -2%;
+	top: -5%; /* if the font is 'Oswald'*/
+	border-radius: 50px;
+	transform: scaleY(0);
+	z-index: -1;
+	animation: rotate 1.5s linear infinite;
+	transition: transform 0.3s ease;
+  }
+  .wrapper ul li a:hover:after{
+	transform: scaleY(1);
+  }
+  .wrapper ul li a:hover{
+	color: #fff;
+  }
+  input[type="checkbox"]{
+	display: none;
+  }
+  .content{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+	text-align: center;
+	width: 100%;
+	color: #202020;
+  }
+  .content .title{
+	font-size: 40px;
+	font-weight: 700;
+  }
+  .content p{
+	font-size: 35px;
+	font-weight: 600;
+  }
+  
+  @keyframes rotate {
+	0%{
+	  filter: hue-rotate(0deg);
+	}
+	100%{
+	  filter: hue-rotate(360deg);
+	}
+  }
+  
+
+  /*
+  ----------------------------------------------------Gallery d'image------------------------------------------------------------------
+  */
+  @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Fira+Mono:wght@500&display=swap");
+body {
+  min-height: 95vh;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+  font-family: "Fira Mono", monospace;
+}
+
+
+h3 {
+  font-family: "Permanent Marker", cursive;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+}
+
+.cards {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card {
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  background-image: url("img/image_souhaits_ridicules.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 70px;
+  /*background: linear-gradient(145deg, #e6e6e6, #ffffff);
+   */
+  box-shadow: 30px 30px 40px #141313, -30px -30px 40px #1c1919;
+  transform: scale(1.05);
+  margin: 2rem;
+  
+}
+
+@keyframes rainbow {
+  0%   {background-color:purple; left:0px; top:0px;}
+  25%  {background-color:blue; left:200px; top:0px;}
+  50%  {background-color:green; left:200px; top:200px;}
+  75%  {background-color:yellow; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+
+.card {
+  
+  background-color: black;
+  position: relative;
+  animation: rainbow 5s linear infinite alternate;
+  padding-right: 30px ;
+}
+.colour {
+  position: absolute;
+  width: 100%;
+  height: 15%;
+  background: rgb(255, 60, 14);
+  background: linear-gradient(
+    125deg,
+    rgba(255, 60, 14, 1) 28%,
+    rgba(255, 255, 102, 1) 89%
+  );
+  right: 120px;
+  top: 40px;
+  transform: rotate(-45deg) translateY(-90px);
+}
+
+.colour::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 40px;
+  background-color: #ff3c0e;
+  transform: translateX(-145px);
+}
+
+
+.colour-bottom {
+  position: absolute;
+  width: 100%;
+  height: 15%;
+  background-color: rgba(97, 34, 28, 1);
+  left: 140px;
+  top: 245px;
+  transform: rotate(-45deg) translateY(95px);
+}
+
+
+.colour-bottom::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 40px;
+  background: rgb(97, 34, 28);
+  background: linear-gradient(
+    331deg,
+    rgba(97, 34, 28, 1) 40%,
+    rgba(125, 215, 178, 1) 66%
+  );
+  transform: translateX(-147px);
+}
+
+
+.nezuko {
+  background-image: url("img/charle_perault.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+.nezuko .colour {
+  background: rgb(227, 121, 130);
+  background: linear-gradient(
+    125deg,
+    rgba(227, 121, 130, 1) 28%,
+    rgba(172, 24, 69, 1) 89%
+  );
+}
+
+
+.nezuko .colour::before {
+  background: rgba(172, 24, 69, 1);
+}
+
+
+.nezuko .colour-bottom {
+  background: rgba(128, 23, 34, 1);
+}
+
+
+.nezuko .colour-bottom::before {
+  background: rgb(128, 23, 34);
+  background: linear-gradient(
+    125deg,
+    rgba(128, 23, 34, 1) 40%,
+    rgba(60, 29, 40, 1) 66%
+  );
+}
+
+.zenitsu {
+  background-image: url("img/jupiter.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* @keyframes rainbow {
+  0%   {background-color:purple; left:0px; top:0px;}
+  25%  {background-color:blue; left:200px; top:0px;}
+  50%  {background-color:green; left:200px; top:200px;}
+  75%  {background-color:yellow; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+
+.zenitsu {
+  
+  background-color: black;
+  position: relative;
+  animation: rainbow 5s linear infinite alternate;
+  padding-right: 30px ;
+} */
+
+.zenitsu .colour {
+  background: rgb(254, 241, 163);
+  background: linear-gradient(
+    125deg,
+    rgba(254, 241, 163, 1) 40%,
+    rgba(254, 233, 88, 1) 59%
+  );
+}
+
+.zenitsu .colour::before {
+  background: rgba(254, 233, 88, 1);
+}
+
+.zenitsu .colour-bottom {
+  background: rgb(224, 153, 45);
+}
+
+.zenitsu .colour-bottom::before {
+  background: rgb(224, 153, 45);
+  background: linear-gradient(
+    125deg,
+    rgba(224, 153, 45, 1) 40%,
+    rgba(176, 123, 0, 1) 60%
+  );
+}
+
+.card-text {
+  opacity: 0;
+  position: relative;
+  top: 80px;
+  font-size: 120%;
+}
+
+.card:hover {
+  border-radius: 50px;
+  background: linear-gradient(145deg, #e6e6e6, #ffffff);
+  box-shadow: 30px 30px 40px #141313, -30px -30px 40px #1c1919;
+  animation: large 0.7s ease-in-out forwards;
+}
+
+@keyframes large {
+  100% {
+    transform: scale(0.85);
+  }
+}
+
+.card:hover .card-text {
+  opacity: 1;
+}
+
+.card:hover .colour {
+  animation: move 0.7s ease-in-out forwards;
+}
+
+@keyframes move {
+  0% {
+    transform: rotate(-45deg) translateY(-85px);
+  }
+  100% {
+    transform: rotate(-45deg) translateY(0px);
+  }
+}
+
+.card:hover .colour-bottom {
+  animation: move1 0.7s ease-in-out forwards;
+}
+
+@keyframes move1 {
+  0% {
+    transform: rotate(-45deg) translateY(90px);
+  }
+  100% {
+    transform: rotate(-45deg) translateY(0px);
+  }
+}
+
+footer {
+  width: 80%;
+  height: 100px;
+  color: white;
+  text-align: center;
+
+  position: relative;
+  bottom: 0;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(224, 153, 45, 1);
+}
+
+/*
+---------------------------------------------------------------------description du conte---------------------------------------------------
+*/
+@import url('https://fonts.googleapis.com/css?family=Exo:700');
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+@keyframes defile {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+.title {
+  animation: defile 3s infinite alternate;
+  font-size: 20px;
+  color: #e4087e;
+  font-weight: bold;
+}
+.title{
+  width:100%;
+  text-align: center;
+  height:30%;
+  margin-bottom: 20px;
+}
+
+.title h1{
+  font-size:50px;
+  font-family: 'Exo', sans-serif;
+}
+
+.para{
+	text-align: center;
+	color: #e6e6e6;
+	font-size: 30px;
+	padding-bottom: 15px;
+}
+
+/*video du conte*/
+
+video{
+	width:600px;
+	height:10%px;
+	border: 1px solid black;
+	margin-left:30%;
+} 
+
+/*
+----------------------------------------------FIN de la mise en page : les souhaits ridicules------------------------------------------
+*/
